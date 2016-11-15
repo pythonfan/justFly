@@ -14,7 +14,7 @@ $link = mysqli_connect('localhost', 'root', 'root', 'airlinereservation');
 $sql = "SELECT * FROM user WHERE username = '".$email."';";
 $result = mysqli_query($link,$sql);
 
-if($result)
+if(mysqli_fetch_row($result)!=null)
 {
 	$_SESSION['error_msg'] =  "User with this username already exists. Please sign up with a different username";
 	header("Location: errorPage.php");

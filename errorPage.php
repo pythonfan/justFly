@@ -26,14 +26,14 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="home.html">JustFly</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#services">SERVICES</a></li>
-        <li><a href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#pricing">SIGN IN</a></li>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="#services">FLIGHTS</a></li>
+        <li><a href="viewReservations.php">RESERVATIONS</a></li>
+        <li><a href="login.html">LOG IN</a></li>
         <li><a href="signUp.html">SIGN UP</a></li>
       </ul>
     </div>
@@ -45,7 +45,9 @@ session_start();
 <h1>Error </h1>
   <?php
   if(isset($_SESSION['error_msg']))
+  {
 	  $error_message = $_SESSION['error_msg'];
+  }
   else
 	  $error_message = "An error occured on the previous page";
   echo "<h3>". $error_message. "</h3>";
