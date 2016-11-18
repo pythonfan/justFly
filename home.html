@@ -38,13 +38,13 @@
 </nav>
 
 <div class="jumbotron text-center">
-<form action="">
+<form action="viewFlights.php">
 <div class="container">
    
 
   <h1>Just Fly </h1>
   <p>Where would you like to fly??</p>
-  <form>
+  
     <label class="radio-inline">
       <input type="radio" name="optradio">Round Trip
     </label>
@@ -54,10 +54,10 @@
     <label class="radio-inline">
       <input type="radio" name="optradio">Multicity
     </label>
-  </form>
+  
 </div>
   <br>
-<form action="action_page.php" class="form-inline" >
+<div class="form-inline" >
   <select name="Guests" class="form-control"  placeholder="Guests" required>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -80,16 +80,23 @@
     <option value="Dallas">Dallas</option>
     <option value="San Diego">San Diego</option>
     <option value="Florida">Florida</option>
-    <option value="NewYork">Audi</option>
+    <option value="NewYork">New York</option>
+	<option value="Los Angeles">Los Angeles</option>
+
+	
   </select>
    <select name="To" class="form-control"  placeholder="To" required>
-    <option value="chicago">Chicago</option>
+    <option value="Chicago">Chicago</option>
     <option value="Raleigh">Raleigh</option>
     <option value="Atlanta">Atlanta</option>
     <option value="Austin">Austin</option>
+	<option value="Los Angeles">Los Angeles</option>
+    <option value="Dallas">Dallas</option>
+
   </select>
   
-  <button type="button" class="btn btn-danger">Search Flights</button>
+  <button type="submit" class="btn btn-danger">Search Flights</button>
+</div>
 </form>
 </div>
 </div>
