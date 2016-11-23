@@ -20,7 +20,17 @@ if($result)
 		$_SESSION['username'] = $email;
 		session_write_close();
 		echo "Authenticated";
-		header("Location: viewReservations.php");
+		//Redirect to redirecting page 
+				if(isset($_POST['redirurl'])) 
+				{
+					$url = $_POST['redirurl']; // holds url for last page visited. 
+					header("Location:$url");
+				}
+				else
+				{
+					//echo ("Redirected from:". $_POST['redirurl']);
+					header("Location: viewReservations.php");
+				}
 	}
 	else
 	{

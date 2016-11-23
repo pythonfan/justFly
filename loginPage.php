@@ -33,26 +33,30 @@ session_start();
         <li><a href="home.html">HOME</a></li>
         <li><a href="#services">FLIGHTS</a></li>
         <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="loginPage.php">LOG IN</a></li>
+        <li><a href="login.html">LOG IN</a></li>
         <li><a href="signUp.html">SIGN UP</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!--Signup-->
+<!--Login-->
 <div class="jumbotron text-center">
-<h1>Error </h1>
-  <?php
-  if(isset($_SESSION['error_msg']))
-  {
-	  $error_message = $_SESSION['error_msg'];
-  }
-  else
-	  $error_message = "An error occured on the previous page";
-  echo "<h3>". $error_message. "</h3>";
-  ?>
- </div>   
+<h1>Log In </h1>
+			<div class="row">
+			<form action="login.php" method="post" class="form" role="form">
+			<input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
+			
+			 <div class="col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-xs-offset-2 col-md-offset-4" >
+                    <label for = "firstname">Username: </label><input class="form-control" name="username" id = "username" placeholder="Userame" type="text" required autofocus />
+                   <label for = "lasttname">Password: </label><input class="form-control" name="password" id = "password" placeholder="Password" type="password" required />
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Log In</button>
+			</div>
+            </form>
+			</div>
 </div>
 
 

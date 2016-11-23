@@ -31,16 +31,16 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
-        <li><a href="#services">FLIGHTS</a></li>
-        <li><a href="viewReservations.php">RESERVATIONS</a></li>
+        <li><a href="viewFlights.php">FLIGHTS</a></li>
 		<?php
 		if(isset($_SESSION['user_fname']))
 		{
+			echo("<li><a href='viewReservations.php'>RESERVATIONS</a></li>");
 			echo("<li><a href='logout.php'>LOG OUT</a></li>");			
 		}
 		else
 		{
-			echo('<li><a href="login.html">LOG IN</a></li>');
+			echo('<li><a href="loginPage.php">LOG IN</a></li>');
 			echo('<li><a href="signUp.html">SIGN UP</a></li>');
 		}
 		?>
@@ -63,7 +63,7 @@ session_start();
 	$username = $_SESSION['username'];
 	$link = mysqli_connect('localhost', 'root', 'root', 'airlinereservation');
 	//check if user with same username exists in db
-	$sql = "SELECT r.reservationId, f.flight_no, fi.DepartTime, fi.DepartureDate, fa.cityName, ta.cityName, fi.ArriveTime, fi.ArrivalDate  FROM reservation r JOIN user_reservation ur ON r.reservationId = ur.reservationId JOIN user u ON ur.username = u.UserName JOIN Flight_Instance fi ON r.InstanceId = fi.InstanceId JOIN flight f ON fi.flight_no = f.flight_no JOIN airport fa ON f.from_airport_id = fa.airportId JOIN airport ta ON f.to_airport_id = ta.airportId WHERE u.username = '".$username."';";
+	$sql = "SELECT r.reservationId, f.flight_no, fi.DepartTime, fi.DepartureDate, fa.cityName, ta.cityName, fi.ArriveTime, fi.ArrivalDate  FROM reservation r JOIN user u ON r.username = u.UserName JOIN Flight_Instance fi ON r.InstanceId = fi.InstanceId JOIN flight f ON fi.flight_no = f.flight_no JOIN airport fa ON f.from_airport_id = fa.airportId JOIN airport ta ON f.to_airport_id = ta.airportId WHERE u.username = '".$username."';";
 	$result = mysqli_query($link,$sql);
 
 	if (mysqli_num_rows($result)>0)
@@ -86,6 +86,9 @@ session_start();
 		echo("Currently you have no reservations.");
 		echo ($sql);
 	}
+  }
+  else{
+	  header("Location: home.html");
   }
   ?>
 </div>
