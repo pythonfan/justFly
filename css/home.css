@@ -7,7 +7,7 @@
   h2 {
       font-size: 24px;
       text-transform: uppercase;
-      color: #303030;
+      color: white;
       font-weight: 600;
       margin-bottom: 30px;
   }
@@ -175,5 +175,10 @@
     .logo {
         font-size: 150px;
     }
+  }
+
+  #aa{
+    color: white;
+    text-decoration: none;
   }
   
