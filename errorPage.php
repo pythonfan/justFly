@@ -4,8 +4,8 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Company Page</title>
+  
+  <title>Error Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -33,14 +33,13 @@ session_start();
         <li><a href="home.html">HOME</a></li>
         <li><a href="#services">FLIGHTS</a></li>
         <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="loginPage.php">LOG IN</a></li>
+        <li><a href="login.html">LOG IN</a></li>
         <li><a href="signUp.html">SIGN UP</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!--Signup-->
 <div class="jumbotron text-center">
 <h1>Error </h1>
   <?php
@@ -55,14 +54,6 @@ session_start();
  </div>   
 </div>
 
-
-
-<footer class="container-fluid text-center">
-  <a href="#myPage" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-</footer>
 
 
 </body>

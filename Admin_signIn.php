@@ -15,7 +15,7 @@ session_start();
 	
 	
 	if(empty($email) || empty ($password)){
-		header('Location: errorPage.php');	
+		header('Location: AdminErrorPage.php');	
 		}
 		
 		else
@@ -24,7 +24,7 @@ session_start();
 		$result	= $con->query($sql);
 		
 		if(!$row = $result->fetch_assoc()){
-			header('Location: errorPage.php');
+			header('Location: AdminErrorPage.php');
 		}
 		else
 		{

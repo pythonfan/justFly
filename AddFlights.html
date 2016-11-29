@@ -16,7 +16,19 @@
   
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <img src="logo.png" alt="LOGO" height="100" width="130"/>
+    </div>
+    
+  </div>
+</nav>
 
 <div class="jumbotron text-center">
 <h1>Add Flight</h1>
@@ -50,14 +62,13 @@
              <td><label for = "arrive_time">Arrival Time: </label><input class="form-control" name="arrive_time" id= "arrive_time" placeholder="Arrival Time" type="time"/></td>
 			  </tr>
 			  <tr>
-			<td> <label for = "arrive_date">Date: </label><input class="form-control" name="arrive_date" id= "arrive_date" placeholder="arrive_date"  type="date"/></td>
-            <td> <label for = "depart_date">Date: </label><input class="form-control" name="depart_date" id= "depart_date" placeholder="depart_date"  type="date"/></td>
+			<td> <label for = "arrive_date">Arrival Date: </label><input class="form-control" name="arrive_date" id= "arrive_date" placeholder="Arrival Date"  type="date"/></td>
+            <td> <label for = "depart_date">Departure Date: </label><input class="form-control" name="depart_date" id= "depart_date" placeholder="Departure Date"  type="date"/></td>
 			  </tr>
 			  </table>
 			  
 			 <br/>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Add</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
             </form>
         </div>
  </div>   
