@@ -7,7 +7,7 @@
   h2 {
       font-size: 24px;
       text-transform: uppercase;
-      color: white;
+      color: #303030;
       font-weight: 600;
       margin-bottom: 30px;
   }
@@ -176,9 +176,31 @@
         font-size: 150px;
     }
   }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+		
+    }
+  }
 
-  #aa{
+  .navbar-brand img{
+	  height : 30px;
+	  width : 130px;
+  }
+  a#aa{
     color: white;
     text-decoration: none;
+  }
+  
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  body#myPage.shortPage{
+	  background-color: #f4511e;
+	 /* background-image: url('../images/flighttoindia.png'); 
+	  background-size: cover; 
+	  background-repeat:no-repeat;
+	  */
   }
   
