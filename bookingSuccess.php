@@ -26,15 +26,24 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
- </div>
+       <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
+    </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
-        <li><a href="#services">FLIGHTS</a></li>
-        <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="login.html">LOG IN</a></li>
-        <li><a href="signUp.html">SIGN UP</a></li>
+        <li><a href="viewFligths.php">FLIGHTS</a></li>
+		<?php
+		if(isset($_SESSION['user_fname']))
+		{
+			echo("<li><a href='viewReservations.php'>RESERVATIONS</a></li>");
+			echo("<li><a href='logout.php'>LOG OUT</a></li>");			
+		}
+		else
+		{
+			echo('<li><a href="loginPage.php">LOG IN</a></li>');
+			echo('<li><a href="signUp.html">SIGN UP</a></li>');
+		}
+		?>
       </ul>
     </div>
   </div>
@@ -52,7 +61,7 @@ session_start();
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-</footer> 
+  <p>&copy; Just Fly. All Rights Reserved </p>
+</footer>
 </body>
 </html>

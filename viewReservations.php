@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Just Fly</title>
+  <title>Just Fly | Reservations</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,7 +26,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+      <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -112,7 +112,7 @@ session_start();
 	else
 	{
 		echo("Currently you have no reservations.");
-		echo ($sql);
+		//echo ($sql);
 	}
   }
   else{
@@ -125,7 +125,7 @@ session_start();
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>&copy; Just Fly. All Rights Reserved </p>
 </footer>
 
 

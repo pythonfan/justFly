@@ -12,7 +12,7 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Company Page</title>
+  <title>Just Fly | Passenger Information</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,7 +23,7 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
   <link rel = "stylesheet" href="css/home.css">
   <script src = "js/home.js"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" class="shortPage">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -33,7 +33,7 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+     <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
  <div class="collapse navbar-collapse" id="myNavbar">
        <ul class="nav navbar-nav navbar-right">
@@ -121,7 +121,7 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>&copy; Just Fly. All Rights Reserved </p>
 </footer>
 
 

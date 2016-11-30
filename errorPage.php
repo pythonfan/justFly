@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
   
-  <title>Error Page</title>
+  <title>Just Fly | Error</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,7 +16,7 @@ session_start();
   <link rel = "stylesheet" href="css/home.css">
   <script src = "js/home.js"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60"class="shortPage">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -26,14 +26,14 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+      <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
         <li><a href="#services">FLIGHTS</a></li>
         <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="login.html">LOG IN</a></li>
+        <li><a href="loginPage.php">LOG IN</a></li>
         <li><a href="signUp.html">SIGN UP</a></li>
       </ul>
     </div>
@@ -54,7 +54,12 @@ session_start();
  </div>   
 </div>
 
-
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>&copy; Just Fly. All Rights Reserved </p>
+</footer>
 
 </body>
 </html>

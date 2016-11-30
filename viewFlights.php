@@ -28,7 +28,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+       <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
        <ul class="nav navbar-nav navbar-right">
@@ -192,7 +192,7 @@ session_start();
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>&copy; Just Fly. All Rights Reserved </p>
 </footer>
 <script>
 $(document).ready(function(){
