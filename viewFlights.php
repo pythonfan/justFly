@@ -81,8 +81,9 @@ session_start();
     <option value="Dallas">Dallas</option>
     <option value="San Diego">San Diego</option>
     <option value="Florida">Florida</option>
-    <option value="NewYork">New york</option>
+    <option value="New York">New York</option>
 	<option value="Los Angeles">Los Angeles</option>
+	<option value="Chicago">Chicago</option>
   </select>
    <select name="To" class="form-control"  placeholder="To" required>
     <option value="Chicago">Chicago</option>
@@ -91,6 +92,7 @@ session_start();
     <option value="Austin">Austin</option>
 	<option value="Los Angeles">Los Angeles</option>
 	<option value="Dallas">Dallas</option>
+	<option value="New York">New York</option>
 
   </select>
   <button type="submit" class="btn btn-danger">Search Flights</button>
@@ -115,7 +117,7 @@ session_start();
 	$toAirport = $_GET['To'];
 	$link = mysqli_connect('localhost', 'root', 'root', 'airlinereservation');
 	//retrieve flights
-	$sql = "SELECT fi.InstanceId, f.flight_no, fi.DepartureDate, fi.DepartTime, fi.ArriveTime, ta.cityName, fa.cityName FROM flight f JOIN flight_Instance fi ON f.flight_no =  fi.Flight_no JOIN Airport ta ON f.from_airport_id = ta.AirportId JOIN Airport fa ON f.to_airport_id = fa.AirportId WHERE fa.cityName = '".$fromAirport."' AND ta.cityName = '".$toAirport."';";
+	$sql = "SELECT fi.InstanceId, f.flight_no, fi.DepartureDate, fi.DepartTime, fi.ArriveTime, fa.cityName, ta.cityName, fi.Status, fi.fare FROM flight f JOIN flight_Instance fi ON f.flight_no =  fi.Flight_no JOIN Airport ta ON f.to_airport_id = ta.AirportId JOIN Airport fa ON f.from_airport_id = fa.AirportId WHERE fa.cityName = '".$fromAirport."' AND ta.cityName = '".$toAirport."';";
 	$result = mysqli_query($link,$sql);
 
 	if (mysqli_num_rows($result)>0)
@@ -130,11 +132,15 @@ session_start();
 		}
 		echo("<table id='onwardFlight' class='table table-hover' name='onwardflight' data-toggle='table' data-pagination='true' data-search='true'  data-fixed-columns='true'
        data-fixed-number='2'>");
-		echo("<thead><th style=\"display: none;\"></th><th>Flight Number</th><th data-sortable='true'>Date</th><th data-sortable='true'>Departure Time</th><th data-sortable='true'>Arrival Time<th>From</th><th>To</th></thead><tbody>");
+		echo("<thead><th style=\"display: none;\"></th><th>Flight Number</th><th data-sortable='true'>Date</th><th data-sortable='true'>Departure Time</th><th data-sortable='true'>Arrival Time<th>From</th><th>To</th><th>Fare</th></thead><tbody>");
 	while(($row = mysqli_fetch_row($result))!=null)
 	{
-		echo("<tr><td id='InstanceId' style=\"display: none;\">".$row[0]."</td><td>"
-		. $row[1]. "</td><td>" .$row[2]. "</td><td>" .$row[3]. "</td><td>" .$row[4]. "</td><td>".$row[5]."</td><td>".$row[6]."</td></tr>");
+		$onwardFlightStatus = $row[7];
+		if($onwardFlightStatus != 0)
+		{
+			echo("<tr><td id='InstanceId' style=\"display: none;\">".$row[0]."</td><td>"
+		. $row[1]. "</td><td>" .$row[2]. "</td><td>" .$row[3]. "</td><td>" .$row[4]. "</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[8]."</td></tr>");
+		}
 	}
 		echo("</tbody></table>");
 	}
@@ -148,17 +154,21 @@ session_start();
 	if(strcmp($_GET['optradio'], "roundtrip")==0)
 	{
 		echo("</br>");
-		$sql1 = "SELECT fi.InstanceId, f.flight_no, fi.DepartureDate, fi.DepartTime, fi.ArriveTime, ta.cityName, fa.cityName FROM flight f JOIN flight_Instance fi ON f.flight_no =  fi.Flight_no JOIN Airport ta ON f.from_airport_id = ta.AirportId JOIN Airport fa ON f.to_airport_id = fa.AirportId WHERE fa.cityName = '".$toAirport."' AND ta.cityName = '".$fromAirport."';";
+		$sql1 = "SELECT fi.InstanceId, f.flight_no, fi.DepartureDate, fi.DepartTime, fi.ArriveTime, fa.cityName, ta.cityName, fi.status, fi.fare FROM flight f JOIN flight_Instance fi ON f.flight_no =  fi.Flight_no JOIN Airport ta ON f.to_airport_id = ta.AirportId JOIN Airport fa ON f.from_airport_id = fa.AirportId WHERE fa.cityName = '".$toAirport."' AND ta.cityName = '".$fromAirport."';";
 	$result1 = mysqli_query($link,$sql1);
 
 	if (mysqli_num_rows($result1)>0)
 	{
 	    echo("<h2>Return Flights</h2>");
 		echo("<table id='returnFlight' class='table table-hover' name='returnFlight' data-toggle='table' data-pagination='true' data-search='true'>");
-		echo("<thead><th style=\"display: none;\"></th><th>Flight Number</th><th>Date</th><th data-sortable='true'>Departure Time</th><th data-sortable='true'>Arrival Time</th><th>From</th><th>To</th></thead><tbody>");
+		echo("<thead><th style=\"display: none;\"></th><th>Flight Number</th><th>Date</th><th data-sortable='true'>Departure Time</th><th data-sortable='true'>Arrival Time</th><th>From</th><th>To</th><th>Fare</th></thead><tbody>");
 	while(($row1 = mysqli_fetch_row($result1))!=null)
 	{
-		echo("<tr><td id='InstanceId' style=\"display: none;\" >". $row1[0] ."</td><td>". $row1[1]. "</td><td>" .$row1[2]. "</td><td>" .$row1[3]. "</td><td>" .$row1[4]. "</td><td>".$row1[5]."</td><td>".$row1[6]."</td></tr>");
+		$returnFlightStatus = $row1[7];
+		if($returnFlightStatus!=0)
+		{
+			echo("<tr><td id='InstanceId' style=\"display: none;\" >". $row1[0] ."</td><td>". $row1[1]. "</td><td>" .$row1[2]. "</td><td>" .$row1[3]. "</td><td>" .$row1[4]. "</td><td>".$row1[5]."</td><td>".$row1[6]."</td><td>".$row1[8]."</td></tr>");
+	    }
 	}
 		echo("</tbody></table>");
 	}
@@ -188,7 +198,8 @@ session_start();
 $(document).ready(function(){
 var onwardInstnceId = null;
 var returnInstanceId = null;
-$('#onwardFlight').on('click-row.bs.table', function(e, row, $element){$('#onwardFlight').find('tbody tr.active').removeClass('active'); $element.addClass('active'); onwardInstanceId = $element.find('#InstanceId').html();});
+$('#bookFlights').hide();
+$('#onwardFlight').on('click-row.bs.table', function(e, row, $element){$('#onwardFlight').find('tbody tr.active').removeClass('active'); $element.addClass('active'); onwardInstanceId = $element.find('#InstanceId').html(); $('#bookFlights').show();});
 $('#returnFlight').on('click-row.bs.table', function(e, row, $element){$('#returnFlight').find('tbody tr.active').removeClass('active'); $element.addClass('active');  returnInstanceId = $element.find('#InstanceId').html();});
 
 // Post to the provided URL with the specified parameters.

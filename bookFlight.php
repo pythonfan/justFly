@@ -59,12 +59,15 @@ session_start();
 	}	
 	$onInstance = $_POST['OnwardInstanceID'];
 	$returnInstance = $_POST['ReturnInstanceID'];
-	echo("onward= " . $onInstance);
-	if($returnInstance !=null)
-		echo("return" . $returnInstance);
+	//echo("onward= " . $onInstance);
+	//if($returnInstance !=null)
+	//	echo("return" . $returnInstance);
 ?>
 <div class="row">
 			<h3>Flight Information:</h3><br />
+			<div class = "col-sm-2">
+			</div>
+			<div class = "col-sm-8">
 			<?php
 			if($returnInstance!=null)
 				echo ("<h3>Onward Flight</h3>");
@@ -86,23 +89,30 @@ session_start();
 			echo("<h3> Seat availability </h3>");
 			$sql = "SELECT CategoryId, Availability FROM available_seats WHERE InstanceId = $onInstance;";
 			$result = mysqli_query($link,$sql);
+			$isAvailableOn = false;
 			if (mysqli_num_rows($result)>0)
 			{
 				while(($row = mysqli_fetch_row($result))!=null)
 				{
-					echo("$row[0] $row[1]<br />");
+					if($row[1] > 0)
+					{
+						echo("$row[0] $row[1]<br />");
+						$isAvailableOn = true;
+					}
+					
 				}
 			}
 			else
 			{
-				echo("Sorry, we are unable to fetch seat information for this flight");
+				echo("Sorry, we are unable to fetch seat information for this flight\n");
 			}
 			
 			}
 			else{
 				echo("No flights found");
 			}
-			
+			//Initialized to true for case when a 1 way flight is being booked
+			$isAvailableReturn = true;
 			
 			//Return flight information
 			if($returnInstance!=null)
@@ -112,6 +122,7 @@ session_start();
 			$sql = "SELECT fi.DepartureDate, fi.DepartTime, fi.ArrivalDate, fi.ArriveTime, fa.CityName, ta.CityName FROM Flight_Instance fi JOIN Flight f ON fi.flight_no = f.flight_no JOIN airport ta ON f.to_airport_id = ta.airportId JOIN airport fa ON f.From_Airport_id = fa.airportId WHERE fi.InstanceId = '".$returnInstance."';";
 			$result = mysqli_query($link,$sql);
 
+			
 			if (mysqli_num_rows($result)>0)
 			{
 				echo("<table class='table'>");
@@ -126,16 +137,21 @@ session_start();
 			echo("<h3> Seat availability </h3>");
 			$sql = "SELECT CategoryId, Availability FROM available_seats WHERE InstanceId = $returnInstance;";
 			$result = mysqli_query($link,$sql);
+			$isAvailableReturn = false;
 			if (mysqli_num_rows($result)>0)
 			{
 				while(($row = mysqli_fetch_row($result))!=null)
 				{
-					echo("$row[0] $row[1]<br />");
+					if($row[1] > 0)
+					{
+						echo("$row[0] $row[1]<br />");
+						$isAvailableReturn = true;
+					}
 				}
 			}
 			else
 			{
-				echo("Sorry, we are unable to fetch seat information for this flight");
+				echo("Sorry, we are unable to fetch seat information for this flight\n");
 			}
 			
 			}
@@ -143,6 +159,8 @@ session_start();
 				echo("No flights found");
 			}
 			}
+			if($isAvailableOn && $isAvailableReturn)
+			{
 			?>
 			<br />
 			<br />
@@ -170,7 +188,13 @@ session_start();
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Continue</button> 
 			</div>
 			</form>
-			
+			<?
+			}//end of if
+			else{
+				echo("\nSorry, we do not have any available seats on this flight");
+			}
+			?>
+		</div><!-- col-sm-8 -->	
  </div>   
 </div>
 

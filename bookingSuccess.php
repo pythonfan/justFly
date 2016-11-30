@@ -4,8 +4,8 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Company Page</title>
+  
+  <title>Error Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,8 +26,8 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
-    </div>
+      <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
+ </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
@@ -40,35 +40,19 @@ session_start();
   </div>
 </nav>
 
-<!--Login-->
-<div class="jumbotron text-center">
-<h1>Log In </h1>
-			<div class="row">
-			<form action="login.php" method="post" class="form" role="form">
-			<input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
-			
-			 <div class="col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-xs-offset-2 col-md-offset-4" >
-                    <label for = "firstname">Username: </label><input class="form-control" name="username" id = "username" placeholder="Userame" type="text" required autofocus />
-                   <label for = "lasttname">Password: </label><input class="form-control" name="password" id = "password" placeholder="Password" type="password" required />
-            <br />
-            <br />
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Log In</button>
-			</div>
-            </form>
-			</div>
-</div>
 
-
+ <div class="jumbotron text-center" >
+<h1>Success </h1>
+  <?php
+	echo("Your booking was successful!<br><a href = 'viewReservations.php'>View Reservations</a>");
+  ?>
+ </div> 
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
   <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-</footer>
-
-
+</footer> 
 </body>
 </html>
-

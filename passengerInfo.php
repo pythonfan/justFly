@@ -35,13 +35,22 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
       </button>
       <a class="navbar-brand" href="home.html">JustFly</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+ <div class="collapse navbar-collapse" id="myNavbar">
+       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
-        <li><a href="#services">FLIGHTS</a></li>
-        <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="login.html">LOG IN</a></li>
-        <li><a href="signUp.html">SIGN UP</a></li>
+        <li><a href="viewFligths.php">FLIGHTS</a></li>
+		<?php
+		if(isset($_SESSION['user_fname']))
+		{
+			echo("<li><a href='viewReservations.php'>RESERVATIONS</a></li>");
+			echo("<li><a href='logout.php'>LOG OUT</a></li>");			
+		}
+		else
+		{
+			echo('<li><a href="loginPage.php">LOG IN</a></li>');
+			echo('<li><a href="signUp.html">SIGN UP</a></li>');
+		}
+		?>
       </ul>
     </div>
   </div>
@@ -49,13 +58,13 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
 
 <!--Login-->
 <div class="jumbotron text-center">
-<h1>Log In </h1>
+<h1>Passenger Information </h1>
 			<div class="row">
 			<form action="makeReservation.php" method="post" class="form" role="form">
 			<!-- Send flight instance, number of guests, category to reservation page -->
 			<input type="hidden" name="redirurl" value="<? echo $_SERVER['HTTP_REFERER']; ?>" />
 			<p>Primary Traveller</p>
-			<div class="col-xs-3 col-xs-offset-4">
+			<div class="col-xs-4 col-xs-offset-4">
 			<select name="mealpref" class="form-control" placeholder="Meal Preference">
 				<option value="Vegetarian">Vegetarian</option>
 				<option value="Vegan">Vegan</option>
@@ -83,6 +92,7 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
 			</select>
 			<input class="form-control" name="age<? echo($i)?>" id = "age" placeholder="Age" type="text" required />
 				</div>
+			
 			<?php
 				}
 			?>
@@ -93,7 +103,14 @@ echo($fname." ".$lname ." ".$dob. " ". $guests );
 			<input type="hidden" name="dob" value="<? echo $dob; ?>" />
 			<input type="hidden" name="guests" value="<? echo $guests; ?>" />
 			<br />
+			
+			<div class = "row" style="text-align:'center'">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Confirm Booking</button>
+			</div>
+			</div>
+			
             </form>
 			</div>
 </div>

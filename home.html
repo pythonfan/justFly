@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Bootstrap Theme Company Page</title>
+  <title>Just Fly | Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
   <link rel = "stylesheet" href="css/home.css">
   <script src = "js/home.js"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60"  class="shortPage">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+       <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -70,7 +70,8 @@
     <option value="Dallas">Dallas</option>
     <option value="San Diego">San Diego</option>
     <option value="Florida">Florida</option>
-    <option value="NewYork">New York</option>
+    <option value="New York">New York</option>
+	<option value="Chicago">Chicago</option>
 	<option value="Los Angeles">Los Angeles</option>
 
 	
@@ -81,6 +82,7 @@
     <option value="Atlanta">Atlanta</option>
     <option value="Austin">Austin</option>
 	<option value="Los Angeles">Los Angeles</option>
+	<option value="New York">New York</option>
     <option value="Dallas">Dallas</option>
 
   </select>
@@ -89,11 +91,11 @@
 </div>
 </form>
 </div>
-</div>
 
   <!-- Container (login Section) -->
+<div style="background-image: url('images/flighttoindia.png'); background-size: cover; background-repeat:no-repeat;">
 <form action = "login.php" method = "post">
-<div id="login" class="container-fluid">
+<div id="login" class="container-fluid" >
   <div class="row" >
         <div class="col-sm-2 form-group">
 			<div class="row">
@@ -106,6 +108,13 @@
 			  <input class="form-control" id="password" name="password" placeholder="password" type="password" required>
 			</div>
         </div>
+		<div class = "col-sm-8" style="padding-left:60px">
+		<h4><strong>MISSION:</strong><ul><li> To sell the cheapest airline tickets in an increasingly competitive market</li>
+					<li>To assemble the most advanced team of travel experts in the world</li>
+					<li>To maintain an efficient and technologically bullet-proof platform</li>
+					<li>Innovate, don't imitate.</li></ul></h4>
+		</div>
+		
       </div>
       <div class="row">
         <div class="col-sm-2 form-group">
@@ -115,100 +124,13 @@
     </div>
 </form>
 
-
-
-<div class="container-fluid bg-grey">
-  <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo slideanim"></span>
-    </div>
-    <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Container (Services Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>SERVICES</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-</div>
-
-
-
-<div id="googleMap" style="height:400px;width:100%;"></div>
-
-<!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-var myCenter = new google.maps.LatLng(41.878114, -87.629798);
-
-function initialize() {
-var mapProp = {
-  center:myCenter,
-  zoom:12,
-  scrollwheel:false,
-  draggable:false,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-var marker = new google.maps.Marker({
-  position:myCenter,
-  });
-
-marker.setMap(map);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>&copy; Just Fly. All Rights Reserved </p>
 </footer>
+</div>
 </body>
 </html>
 

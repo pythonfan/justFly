@@ -1,11 +1,7 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <title>Just Fly - Cancel Flight</title>
+  <title>Just Fly - Admin Sign-In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -33,7 +29,6 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
        <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
-		
 		<?php
 		if(isset($_SESSION['admin_email']))
 		{
@@ -49,56 +44,19 @@ session_start();
     </div>
   </div>
 </nav>
+
 <div class="jumbotron text-center">
-<!--
-<div class="jumbotron text-center">
+<h1>Admin Sign-In </h1>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-sm-offset-4 col-xs-offset-2 col-md-offset-4" >
-            <form class="form" role="form" method ="POST">
-            <input type="submit" name="cancel_flight" value="cancel flight" autofocus  onclick="return true;" class="btn btn-danger"/>          
+            <form action="Admin_signIn.php" method="post" class="form" role="form">
+             <label for = "email">Email: </label><input class="form-control" name="email" id = "email" placeholder="Your Email" type="email" />
+             <label for = "password">Password: </label><input class="form-control" name="password" id= "password" placeholder="New Password" type="password" />
+			 <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
             </form>
         </div>
-	</div>   
-</div>
--->
-
-<?php
-
-$con= mysqli_connect("localhost","root","root","AirlineReservation");
-	
-	if(!$con){
-		die("Connection failed : ".mysqli_connect_error());
-	}
-$flight_instance = $_POST['id1'];
-$flight_no = $_POST['id2'];
-    echo "
-            <script type=\"text/javascript\">
-           var r = confirm('Are you sure you want to delete the Flight and corresponding Flight Instance?');
-           if(r == true)
-           {
-           		document.write('<center><h1>Flight# '+ $flight_instance + ' has been cancelled'); 		
-           }
-            </script>
-        ";
-        
-        $sql1 = "DELETE FROM available_seats WHERE InstanceId='$flight_instance'";
-        //$sql2 = "DELETE FROM flight_instance WHERE InstanceId='$flight_instance' and Flight_no='$flight_no';";
-		$sql2 = "UPDATE flight_instance SET status = 0 WHERE InstanceId = '$flight_instance' and Flight_no='$flight_no';";
-    
-		
-        if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2)) 
-        {
-		?>
-        	<p><h4><a href='updateFlightsPage.php'> Add or View flight</a></h4></p>
-		</div>
-        <?php
-		}
-     
-     
-     
-     mysqli_close($con);
-  ?>
-
+ </div>   
 </div>
 
 

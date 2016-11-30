@@ -63,21 +63,49 @@ session_start();
 	$username = $_SESSION['username'];
 	$link = mysqli_connect('localhost', 'root', 'root', 'airlinereservation');
 	//check if user with same username exists in db
-	$sql = "SELECT r.reservationId, f.flight_no, fi.DepartTime, fi.DepartureDate, fa.cityName, ta.cityName, fi.ArriveTime, fi.ArrivalDate  FROM reservation r JOIN user u ON r.username = u.UserName JOIN Flight_Instance fi ON r.InstanceId = fi.InstanceId JOIN flight f ON fi.flight_no = f.flight_no JOIN airport fa ON f.from_airport_id = fa.airportId JOIN airport ta ON f.to_airport_id = ta.airportId WHERE u.username = '".$username."';";
+	$sql = "SELECT r.reservationId, f.flight_no, fi.DepartTime, fi.DepartureDate, fa.cityName, ta.cityName, fi.ArriveTime, fi.ArrivalDate, r.ReturnInstanceId, fi.status FROM reservation r JOIN user u ON r.username = u.UserName JOIN Flight_Instance fi ON r.InstanceId = fi.InstanceId JOIN flight f ON fi.flight_no = f.flight_no JOIN airport fa ON f.from_airport_id = fa.airportId JOIN airport ta ON f.to_airport_id = ta.airportId WHERE u.username = '".$username."';";
 	$result = mysqli_query($link,$sql);
 
 	if (mysqli_num_rows($result)>0)
 	{
 		echo("<table class='table table-hover' >");
 		echo("<thead><th>Reservation ID</th><th>Flight Number</th><th>Time</th><th>Date</th><th>From</th><th>To</th></thead><tbody>");
+	$i=0;
 	while(($row = mysqli_fetch_row($result))!=null)
 	{
-		echo("<tr data-toggle='collapse' data-target='#accordion' class='clickable'><td>".$row[0]. "</td><td> " . $row[1]. "</td><td> ". $row[2]. "</td><td> ". $row[3]."</td><td>". $row[4]. "</td><td>". $row[5]. "</td></tr>");
+		$flightStatus = $row[9];
+		if($flightStatus == 0)
+		{
+			echo("<tr><td colspan = '6'><strong>Flight: $row[1] This flight has been cancelled. Please contact Just Fly for further information</strong></td></tr>");
+		}
+		else
+		{
+		echo("<tr data-toggle='collapse' data-target='#accordion$i' class='clickable'><td>".$row[0]. "</td><td> " . $row[1]. "</td><td> ". $row[2]. "</td><td> ". $row[3]."</td><td>". $row[4]. "</td><td>". $row[5]. "</td></tr>");
 		echo("<tr>
             <td colspan='6'>
-                <div id='accordion' class='collapse'>Arrival at destination:<br> Time: ". $row[6]. " Date:   ". $row[7] ."<br>Seats: </div>
-            </td>
-        </tr>");
+                <div id='accordion$i' class='collapse'>Arrival at destination:<br/> Time: ". $row[6]. " Date:   ". $row[7]);
+		$i++;
+		$returnInstanceId = $row[8];
+		if($returnInstanceId!=null)
+		{
+			$sql1 = "SELECT Flight_no, DepartTime, DepartureDate, ArriveTime, ArrivalDate, Status FROM Flight_instance WHERE InstanceId = '$returnInstanceId';";
+			$result1 = mysqli_query($link,$sql1);
+			if ( mysqli_num_rows($result1)>0)
+			{
+				$row1 = mysqli_fetch_row($result1);
+				$retFlightStatus = $row1[5];
+				if($retFlightStatus == 0)
+				{
+				  echo("<strong>Flight: $row1[0] This flight has been cancelled. Please contact Just Fly for further information</strong>");
+				}
+				else
+				{
+					echo("<br />Return Flight: $row1[0] <br/>Depart Time: ". $row1[1]. " Depart Date:   ". $row1[2]. " <br/>Arrive Time: ". $row1[3]. " Arrive Date:   ". $row1[4]);
+				}
+			}
+		}
+		echo("<br/></div></td></tr>");
+		}
 	}
 		echo("</tbody></table>");
 	}

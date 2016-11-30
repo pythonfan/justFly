@@ -3,9 +3,8 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-  <title>Error Page</title>
+<head> 
+  <title>Just Fly - Update Flights</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,9 +13,9 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel = "stylesheet" href="css/home.css">
-  <script src = "js/home.js"></script>
+  
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" class="shortPage">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -26,35 +25,42 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.html">JustFly</a>
+      <a class="navbar-brand" href="home.html"><img src="images/logo.png" alt="JustFly"/></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">HOME</a></li>
-        <li><a href="#services">FLIGHTS</a></li>
-        <li><a href="viewReservations.php">RESERVATIONS</a></li>
-        <li><a href="login.html">LOG IN</a></li>
-        <li><a href="signUp.html">SIGN UP</a></li>
+		<?php
+		if(isset($_SESSION['admin_email']))
+		{
+			echo("<li><a href='updateFlightsPage.php'>UPDATE FLIGHTS</a></li>");
+			echo("<li><a href='AdminLogout.php'>LOG OUT</a></li>");			
+		}
+		else
+		{
+			echo('<li><a href="Admin_signInPage.php">LOG IN</a></li>');
+		}
+		?>
       </ul>
     </div>
   </div>
 </nav>
 
 <div class="jumbotron text-center">
-<h1>Error </h1>
-  <?php
-  if(isset($_SESSION['error_msg']))
-  {
-	  $error_message = $_SESSION['error_msg'];
-  }
-  else
-	  $error_message = "An error occured on the previous page";
-  echo "<h3>". $error_message. "</h3>";
-  ?>
- </div>   
+<?php
+if(!isset($_SESSION['admin_email']))
+{
+	header("Location : Admin_signInPage.php");
+}
+?>
+<h1> What would you like to do?</h1>
+<form action="AddFlights.php" class="form-inline" method="POST" >
+  <button type="button" class="btn btn-danger"><a id="aa" href="AddFlightsPage.php">Add Flights</a></button>
+</form>
+</br>
+<form  class="form-inline" >
+  <button type="button" class="btn btn-danger"><a id="aa" href="ViewFlightsAdmin.php">View Flights</a></button>
+</form>
 </div>
-
-
-
 </body>
 </html>

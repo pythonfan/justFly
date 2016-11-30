@@ -1,17 +1,15 @@
 <?php
-
+session_start();
 $con= mysqli_connect("localhost","root","root","AirlineReservation");
 	
 	if(!$con){
 		die("Connection failed : ".mysqli_connect_error());
 	}
 
-session_start();
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-
-	$_SESSION['email'] = $email;
-	$_SESSION['password'] = $password;
+	$_SESSION['admin_email'] = $email;
+	//$_SESSION['password'] = $password;
 	
 	
 	if(empty($email) || empty ($password)){
@@ -28,7 +26,7 @@ session_start();
 		}
 		else
 		{
-			header('Location: UpdateFlights.html');
+			header('Location: UpdateFlightsPage.php');
 		}
 		}
 ?>
